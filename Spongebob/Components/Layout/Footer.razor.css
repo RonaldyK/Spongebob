@@ -2,3 +2,12 @@
     background-color: #f8f9fa;
     padding: 1rem;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: inherit;
+    text-transform: uppercase;
+}

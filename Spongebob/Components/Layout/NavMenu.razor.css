@@ -1,3 +1,31 @@
 .navbar-custom {
     margin-bottom: 20px;
 }
+
+@media (min-width: 992px) {
+    .nav-item ::deep a {
+        color: #999999;
+        line-height: 20px;
+        padding-top: 22.5px;
+        padding-bottom: 22.5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-transform: uppercase;
+    }
+
+    .nav-item ::deep .nav-link:hover {
+        border-top: 3px solid #2D3691;
+        padding-top: 19.5px;
+    }
+
+    .nav-item ::deep a.active {
+        color: #333333;
+        background-color: transparent;
+        border-top: 3px solid #2D3691;
+        padding-top: 19.5px;
+    }
+
+}
+
+
+

@@ -1,29 +1,41 @@
-﻿<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light shadow-sm py-0 navbar-custom">
+﻿<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light shadow py-0 navbar-custom">
 	<div class="container">
-		<a class="navbar-brand" href="home">
-			<img src="/logo.png" width="75" alt="Plankton logo" />
+		<a class="navbar-brand p-0" href="home">
+			<div style="height: 100%; display: flex; align-items: center !important;">
+				<img src="/logo.png" style="width: 75px; height: auto;" alt="Plankton logo" />
+			</div>
 		</a>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle Navigation">
-			<span class="navbar-toggler-icon"></span>	
+			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarToggler">
-			<ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+			<ul class="navbar-nav ms-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="/">Home</a>
+					<NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+						Home
+					</NavLink>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="about-us">About Us</a>
+					<NavLink class="nav-link" href="about-us" Match="NavLinkMatch.Prefix">
+						About Us
+					</NavLink>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="projects">Projects</a>
+					<NavLink class="nav-link" href="projects" Match="NavLinkMatch.Prefix">
+						Projects
+					</NavLink>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="services">Services</a>
+					<NavLink class="nav-link" href="services" Match="NavLinkMatch.Prefix">
+						Services
+					</NavLink>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="contact-us">Contact Us</a>
+					<NavLink class="nav-link" href="contact-us" Match="NavLinkMatch.Prefix">
+						 Contact Us
+					</NavLink>
 				</li>
 			</ul>
 		</div>
