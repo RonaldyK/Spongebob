@@ -7,3 +7,98 @@
 .home-slider {
     margin-top: -30px;
 }
+
+.home-services {
+    margin-bottom: 20px;
+    background: #2D3691;
+    color: white;
+}
+
+.home-services .lead {
+    margin: 0px;
+    line-height: 93px;
+    font-size: 21px;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+    font-weight: 300;
+}
+
+.home-services ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.home-services ul:hover li {
+    width: 20%;
+}
+    .home-services ul:hover li:hover {
+        width: 36%;
+    }
+
+.home-services li {
+    float: left;
+    width: 24%;
+    padding: 20px 3px;
+    border-right: 1px solid #222970;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width 300ms;
+}
+
+.home-services li i {
+    font-size: 22px;
+}
+
+.home-services li:first-child {
+    border-left: 1px solid #222970;
+}
+
+.home-services li p {
+    margin: 10px 0 0;
+    text-transform: uppercase;
+}
+
+@media (max-width: 991px) {
+    .home-services ul {
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .home-services li {
+        display: block;
+        float: none;
+        width: 100%;
+        border-right: 0;
+        border-bottom: 1px solid #222970;
+    }
+
+        .home-services li:first-child {
+            border-left: 0;
+        }
+
+    .home-services ul:hover li {
+        width: 100%;
+    }
+
+        .home-services ul:hover li:hover {
+            width: 100%;
+        }
+}
+
+.home-services li span {
+    display: none;
+}
+
+.home-services li:hover span {
+    display: inline-block;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
