@@ -144,3 +144,157 @@
         margin-top: 0;
         font-weight: 500;
     }
+
+
+
+
+.responsive-showcase {
+    padding: 50px 0;
+    background: #f6f6f6;
+    background-image: linear-gradient(#f6f6f6, white 150px, white);
+    background-repeat: no-repeat;
+    border-top: 1px solid #ddd;
+}
+
+
+.tabs-custom {
+    background: none !important;
+}
+
+
+.pills-lightning {
+    width: 55px;
+    height: 55px;
+    fill: #6f6f6f;
+    transition: all 0.2s ease 0s;
+}
+
+    .pills-lightning:hover {
+        width: 55px;
+        height: 55px;
+        fill: #2babcf;
+        transition: all 0.2s ease 0s;
+    }
+
+.active .pills-lightning {
+    width: 55px;
+    height: 55px;
+    fill: #2babcf;
+    transition: all 0.2s ease 0s;
+}
+
+.pills-ups {
+    width: 55px;
+    height: 55px;
+    fill: #6f6f6f;
+    transition: all 0.2s ease 0s;
+}
+
+    .pills-ups:hover {
+        width: 55px;
+        height: 55px;
+        fill: #2babcf;
+        transition: all 0.2s ease 0s;
+    }
+
+.active .pills-ups {
+    width: 55px;
+    height: 55px;
+    fill: #2babcf;
+    transition: all 0.2s ease 0s;
+}
+
+.pills-breaker {
+    width: 55px;
+    height: 55px;
+    fill: #6f6f6f;
+    transition: all 0.2s ease 0s;
+}
+
+    .pills-breaker:hover {
+        width: 55px;
+        height: 55px;
+        fill: #2babcf;
+        transition: all 0.2s ease 0s;
+    }
+
+.active .pills-breaker {
+    width: 55px;
+    height: 55px;
+    fill: #2babcf;
+    transition: all 0.2s ease 0s;
+}
+
+
+
+
+.feedbacks {
+    background-attachment: fixed;
+    margin: 0 0 20px;
+    padding: 20px 0 50px;
+    background: #f6f6f6 url(/images/image-1.jpg) no-repeat center center;
+    background-size: cover;
+    border: 1px solid #ccc;
+}
+
+.feedback {
+    margin: 20px 0 10px;
+}
+
+    .feedback > i {
+        float: left;
+        margin-right: 15px;
+        font-size: 2em;
+    }
+
+    .feedback > div {
+        position: relative;
+        overflow: hidden;
+        padding-left: 20px;
+        padding-right: 6px;
+    }
+
+        .feedback > div > p {
+            padding: 10px 20px;
+            background: white;
+            border: white;
+            border-radius: 0 4px 4px;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.175);
+        }
+
+            .feedback > div > p:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                border-top: 20px solid white;
+                border-left: 30px solid transparent;
+            }
+
+.headline-lg {
+    margin: 30px auto;
+    text-align: center;
+}
+
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-responsive img {
+    vertical-align: middle;
+    border: 0;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+
+}
+
+.branding ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 10px;
+}

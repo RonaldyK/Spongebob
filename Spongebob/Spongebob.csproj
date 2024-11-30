@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\branding\" />
     <Folder Include="wwwroot\NewFolder\" />
   </ItemGroup>
 

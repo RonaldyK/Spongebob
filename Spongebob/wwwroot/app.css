@@ -53,3 +53,11 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
