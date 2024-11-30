@@ -5,12 +5,10 @@
 }
 .content {
     padding-top: 95px;
-    padding-bottom: 380px;
 }
 
 main {
     flex: 1;
-
 }
 
 #blazor-error-ui {

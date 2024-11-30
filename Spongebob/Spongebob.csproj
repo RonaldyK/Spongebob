@@ -11,4 +11,9 @@
     <PackageReference Include="Blazor.Bootstrap" Version="3.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\branding\" />
+    <Folder Include="wwwroot\NewFolder\" />
+  </ItemGroup>
+
 </Project>
