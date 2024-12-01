@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.OpenApi;
 using Spongebob.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// Blazor Bootstrap component library
 builder.Services.AddBlazorBootstrap();
 
+// OpenAPI service
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -19,10 +24,22 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Enable Swagger UI
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+
+
+// Add API endpoint extensions
+app.MapFormEndpoints();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
