@@ -70,9 +70,6 @@
 
         .timeline > .event:hover {
             cursor: pointer;
-            /* &:after {
-        content: "\f111";
-      } */
         }
 
             .timeline > .event:hover h3 {
@@ -104,8 +101,7 @@
             }
 
                 .timeline > .event .event__title > time:before {
-                    content: "\f073";
-                    font-family: FontAwesome;
+                    content: "📆";
                     color: #2babcf;
                     margin-right: 5px;
                 }
