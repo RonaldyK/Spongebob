@@ -104,19 +104,17 @@
 }
 
 
-.headline-lg {
-    margin: 30px auto;
-}
 
-.headline-lg + h4 {
-    margin: -20px auto 30px;
-}
 
 .text-theme-secondary {
     color: #2babcf;
 }
 
 
+.main-services {
+    border-top: 1px solid #ddd;
+    padding: 50px 0;
+}
 
 .services {
     margin: 30px 0;
