@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.OpenApi;
 using Spongebob.Components;
 
 var builder = WebApplication.CreateBuilder(args);

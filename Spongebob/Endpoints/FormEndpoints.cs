@@ -21,14 +21,22 @@ public static class FormEndpoints
                 return Results.BadRequest("Email is required.");
             }
 
+            // Get the referrer so the user gets redirected to exactly where the button was pressed
+            string referrer = request.Headers["Referer"].ToString();
+            if (string.IsNullOrEmpty(referrer))
+            {
+                // Defaults to the homepage
+                referrer = "/";
+            }
+
             // Processing the form (currently just prints to the console)
             // Later will make it save to a database and or send an email
             Console.WriteLine($"Email submitted: {email}");
 
             // Return a success response
 
-            return Results.Ok(new { message = "Submitted succesfully" });
-
+            //return Results.Ok(new { message = "Submitted succesfully" });
+            return Results.Redirect($"{referrer}#emailForm");
         })
             .WithName("SubmitForm")
             .WithDescription("Submits a user email")
