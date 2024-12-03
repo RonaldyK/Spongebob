@@ -1,4 +1,8 @@
+using MongoDB.Driver;
 using Spongebob.Components;
+using Spongebob.Data;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +16,24 @@ builder.Services.AddBlazorBootstrap();
 // OpenAPI service
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+// Setting up MongoDB
+var connectionString = builder.Configuration["Plankton:MongoDbConnection"];
+
+if (connectionString == null)
+{
+    Console.WriteLine("You gotta set up the connecting string URI first in your environment variable lil pup");
+    Environment.Exit(0);
+}
+var client = new MongoClient(connectionString);
+var db = NewsletterDb.Create(client.GetDatabase("plankton-db"));
+
+var email = db.Newsletters.First(n => n.Email == "the-maldivian@hotmail.com");
+Console.WriteLine(email.Email);
+
+
+
 
 var app = builder.Build();
 
