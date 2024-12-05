@@ -12,6 +12,7 @@ namespace Spongebob.Data
 
         public DbSet<Newsletter> Newsletters { get; init; }
 
+        // The Create method can be removed. DbContext configuration will be handled with AddDbContext method in Program.cs
         public static NewsletterDb Create(IMongoDatabase database) =>
             new(new DbContextOptionsBuilder<NewsletterDb>()
                 .UseMongoDB(database.Client, database.DatabaseNamespace.DatabaseName)

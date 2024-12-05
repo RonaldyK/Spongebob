@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using Spongebob.Components;
 using Spongebob.Data;
@@ -26,13 +27,11 @@ if (connectionString == null)
     Console.WriteLine("You gotta set up the connecting string URI first in your environment variable lil pup");
     Environment.Exit(0);
 }
-var client = new MongoClient(connectionString);
-var db = NewsletterDb.Create(client.GetDatabase("plankton-db"));
+var mongoClient = new MongoClient(connectionString);
+var mongoDatabase = mongoClient.GetDatabase("plankton-db");
 
-var email = db.Newsletters.First(n => n.Email == "the-maldivian@hotmail.com");
-Console.WriteLine(email.Email);
-
-
+builder.Services.AddDbContext<NewsletterDb>(options => 
+    options.UseMongoDB(mongoClient, mongoDatabase.DatabaseNamespace.DatabaseName));
 
 
 var app = builder.Build();
