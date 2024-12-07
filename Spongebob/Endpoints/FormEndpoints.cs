@@ -26,11 +26,8 @@ public static class FormEndpoints
                 return Results.BadRequest("Email is required.");
             }
 
-            // Processing the form (currently just prints to the console)
-            // Later will make it save to a database and or send an email
-            
             // Check if the email already exists
-            var existingEmail = await database.Newsletters.FirstOrDefaultAsync(n => n.Email == email);
+            var existingEmail = await database.Newsletters.AsNoTracking().FirstOrDefaultAsync(n => n.Email == email);
             if (existingEmail != null)
             {
                 Console.WriteLine($"Email is already in database: {existingEmail.Email}");

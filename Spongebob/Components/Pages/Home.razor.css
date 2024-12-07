@@ -286,7 +286,6 @@
 .img-responsive img {
     vertical-align: middle;
     border: 0;
-    overflow-clip-margin: content-box;
     overflow: clip;
 
 }
