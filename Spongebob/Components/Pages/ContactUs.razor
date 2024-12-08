@@ -1,34 +1,129 @@
 ﻿@page "/contact-us"
-@rendermode InteractiveServer
+@using System.ComponentModel.DataAnnotations
+@using MongoDB.Bson
+@using Spongebob.Data
+@using Spongebob.Models
 @inject IConfiguration Configuration
+@inject NewsletterDb Context
+
+@attribute [StreamRendering]
 
 <PageTitle >Contact Us</PageTitle>
 
 @if (!string.IsNullOrEmpty(apiKey))
 {
-    <GoogleMap ApiKey="@apiKey"
-               Center="new GoogleMapCenter(4.172705, 73.512052)"
-               Height="400"
-               Width="0"
-               Zoom="17"
-               Markers="markers" />
+	<section class="google-map">
+		<GoogleMap ApiKey="@apiKey"
+		Center="new GoogleMapCenter(4.172705, 73.512052)"
+		Height="400"
+		Width="0"
+		Zoom="17"
+		Markers="markers"
+		@rendermode="InteractiveServer"/>
+
+	</section>
 }
 else 
 {
-    <p>Google Maps is currently unavailable.</p>
+	<p>Google Maps is currently unavailable.</p>
 }
 
+<div id="data" class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="clear:both"></div>
+		</div>
+		<div class="col-md-9"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<h3 class="headline first-child">
+				<span>Contact Us</span>
+			</h3>
+			<p>
+				If you have any inquires, please use the contact form below. We will attend to you as soon as possible.
+			</p>
+			<br>
+			<EditForm role="form" Model="@contactusform" OnValidSubmit="HandleFormSubmission" FormName="ContactUsForm" Enhance>
+				<DataAnnotationsValidator />
+				<ValidationSummary />
+
+				<div class="form-group">
+					<label for="EmailAddress">Email Address</label>
+					<InputText type="email" id="EmailAddress" @bind-Value="contactusform.EmailAddress"></InputText>
+				</div>
+				<div class="form-group">
+					<label for="Name">Name</label>
+					<InputText id="Name" @bind-Value="contactusform.Name"></InputText>
+				</div>
+				<div class="form-group">
+					<label for="PhoneNumber">Phone</label>
+					<InputText id="PhoneNumber" @bind-Value="contactusform.PhoneNumber"></InputText>
+				</div>
+				<div class="form-group">
+					<label for="Message">Message</label>
+					<InputTextArea id="Message" @bind-Value="contactusform.Message"></InputTextArea>
+				</div>
+				<button type="submit" class="btn btn-outline-primary">@btnMessage</button>
+			</EditForm>
+		</div>
+	</div>
+</div>
 
 @code {
+	private string btnMessage = "Send Message";
 
-    // Retrieve the Google Maps API key 
-    private string apiKey;
+	// Retrieve the Google Maps API key 
+	private string apiKey;
 
-    protected override void OnInitialized()
-    {
-        // If config value is null, initialize with an empty string
-        apiKey = Configuration["GoogleMaps:ServiceApiKey"] ?? "";
-    }
+	protected override void OnInitialized()
+	{
+		// If config value is null, initialize with an empty string
+		apiKey = Configuration["GoogleMaps:ServiceApiKey"] ?? "";
+	}
+
+	// Model for 'contact us' form
+	public class ContactUsForm
+	{
+		[Required(ErrorMessage = "Email is required")]
+		public string EmailAddress { set; get; } = string.Empty;
+
+		public string Name { set; get; }  = string.Empty;
+
+		public string PhoneNumber { set; get; } = string.Empty;
+
+		[Required(ErrorMessage = "A message is required")]
+		public string Message { set; get; } = string.Empty;
+
+	}
+
+	[SupplyParameterFromForm]
+	ContactUsForm contactusform { get; set; } = new();
+
+
+	// Handle form submission
+	public async Task HandleFormSubmission()
+	{
+		var contactMessage = new ContactMessage
+		{
+			Id = ObjectId.GenerateNewId(),
+			Name = contactusform.Name,
+			EmailAddress = contactusform.EmailAddress,
+			Message = contactusform.Message,
+			PhoneNumber = contactusform.PhoneNumber,
+			Date = DateTime.Now,
+		};
+		Console.WriteLine("New Message Created!");
+
+		Context.ContactMessages.Add(contactMessage);
+
+		btnMessage = "Submitting";
+		await Context.SaveChangesAsync();
+		
+		contactusform = new ContactUsForm();
+		btnMessage = "Send Message";
+		
+	}
 
 
     List<GoogleMapMarker> markers = new()

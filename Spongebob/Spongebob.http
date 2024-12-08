@@ -1,0 +1,8 @@
+﻿@Spongebob_HostAddress = https://localhost:7061
+
+POST {{Spongebob_HostAddress}}/submit-form
+Content-Type: application/x-www-form-urlencoded
+
+email="the@hotmail.com"
+
+###
