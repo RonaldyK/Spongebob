@@ -6,6 +6,8 @@
 @inject IConfiguration Configuration
 @inject NewsletterDb Context
 
+@attribute [StreamRendering]
+
 <PageTitle >Contact Us</PageTitle>
 
 @if (!string.IsNullOrEmpty(apiKey))
@@ -62,13 +64,14 @@ else
 					<label for="Message">Message</label>
 					<InputTextArea id="Message" @bind-Value="contactusform.Message"></InputTextArea>
 				</div>
-				<button type="submit" class="btn btn-outline-primary">Send Message</button>
+				<button type="submit" class="btn btn-outline-primary">@btnMessage</button>
 			</EditForm>
 		</div>
 	</div>
 </div>
 
 @code {
+	private string btnMessage = "Send Message";
 
 	// Retrieve the Google Maps API key 
 	private string apiKey;
@@ -89,6 +92,7 @@ else
 
 		public string PhoneNumber { set; get; } = string.Empty;
 
+		[Required(ErrorMessage = "A message is required")]
 		public string Message { set; get; } = string.Empty;
 
 	}
@@ -112,9 +116,13 @@ else
 		Console.WriteLine("New Message Created!");
 
 		Context.ContactMessages.Add(contactMessage);
-		await Context.SaveChangesAsync();
 
-		contactusform = new();
+		btnMessage = "Submitting";
+		await Context.SaveChangesAsync();
+		
+		contactusform = new ContactUsForm();
+		btnMessage = "Send Message";
+		
 	}
 
 

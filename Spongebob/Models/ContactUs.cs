@@ -10,7 +10,6 @@ namespace Spongebob.Models
         public ObjectId Id { get; set; }
 
         [BsonElement("email")]
-        [Required(ErrorMessage = "Email is required")]
         public string EmailAddress { set; get; } = string.Empty;
         
         [BsonElement("name")]
